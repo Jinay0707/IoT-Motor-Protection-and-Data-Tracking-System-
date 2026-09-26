@@ -1,0 +1,16 @@
+$kind: http-request
+url: http://localhost:5000/api/sensor-data
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "temperature": 42.5,
+      "voltage": 230,
+      "current": 3.5,
+      "motorStatus": "ON",
+      "fault": "NORMAL"
+    }
+order: 1000

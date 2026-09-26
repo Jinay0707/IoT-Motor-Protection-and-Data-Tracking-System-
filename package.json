@@ -1,0 +1,14 @@
+{
+  "name": "iot-motor-protection-root",
+  "version": "1.0.0",
+  "description": "IoT Motor Protection System - Full Stack Project",
+  "scripts": {
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm run dev",
+    "simulator": "node server/esp32_simulator.js",
+    "test:api": "node server/test-api.js"
+  },
+  "keywords": ["iot", "esp32", "motor-protection", "react", "express", "mongodb"],
+  "author": "",
+  "license": "ISC"
+}

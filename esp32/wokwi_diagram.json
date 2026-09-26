@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "author": "IoT Motor Protection System",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-relay-module", "id": "relay", "top": -120, "left": 180, "attrs": {} },
+    { "type": "wokwi-led", "id": "led", "top": -60, "left": 300, "attrs": { "color": "red" } },
+    { "type": "wokwi-potentiometer", "id": "potTemp", "top": 120, "left": -180, "attrs": { "label": "Temp (34)" } },
+    { "type": "wokwi-potentiometer", "id": "potVolt", "top": 220, "left": -180, "attrs": { "label": "Volt (35)" } },
+    { "type": "wokwi-potentiometer", "id": "potCurr", "top": 320, "left": -180, "attrs": { "label": "Curr (32)" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:26", "relay:IN", "green", [ "h0" ] ],
+    [ "esp:5V", "relay:VCC", "red", [ "h0" ] ],
+    [ "esp:GND", "relay:GND", "black", [ "h0" ] ],
+    [ "esp:27", "led:A", "red", [ "h0" ] ],
+    [ "esp:GND", "led:C", "black", [ "h0" ] ],
+    [ "esp:34", "potTemp:SIG", "orange", [ "h0" ] ],
+    [ "esp:3.3V", "potTemp:VCC", "red", [ "h0" ] ],
+    [ "esp:GND", "potTemp:GND", "black", [ "h0" ] ],
+    [ "esp:35", "potVolt:SIG", "blue", [ "h0" ] ],
+    [ "esp:3.3V", "potVolt:VCC", "red", [ "h0" ] ],
+    [ "esp:GND", "potVolt:GND", "black", [ "h0" ] ],
+    [ "esp:32", "potCurr:SIG", "purple", [ "h0" ] ],
+    [ "esp:3.3V", "potCurr:VCC", "red", [ "h0" ] ],
+    [ "esp:GND", "potCurr:GND", "black", [ "h0" ] ]
+  ]
+}

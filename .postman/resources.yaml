@@ -1,0 +1,13 @@
+# Use this workspace to collaborate
+workspace:
+  id: 731fead5-807e-4db3-8a4f-3bc55ec0390c
+
+cloudResources:
+  collections:
+    ../postman/collections/IoT Motor Protection API: ac92308e-372b-4e05-b63e-7bf318c82c6f
+
+# All resources in the `postman/` folder are automatically registered in Local View.
+# Point to additional files outside the `postman/` folder to register them individually. Example:
+#localResources:
+#  collections:
+#    - ../tests/E2E Test Collection/

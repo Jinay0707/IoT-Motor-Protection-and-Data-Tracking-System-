@@ -1,0 +1,21 @@
+$kind: http-request
+name: http://localhost:5000/api/sensor-data
+description: ""
+url: http://localhost:5000/api/sensor-data
+method: GET
+body:
+  type: json
+  content: "{\r
+
+    \  \"temperature\": 42,\r
+
+    \  \"voltage\": 228,\r
+
+    \  \"current\": 3.4,\r
+
+    \  \"motorStatus\": \"ON\",\r
+
+    \  \"fault\": \"NORMAL\"\r
+
+    }"
+order: 1790281549571

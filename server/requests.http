@@ -1,0 +1,20 @@
+### 1. Check Server Status
+GET http://localhost:5000/
+
+### 2. Send Sensor Data (POST)
+POST http://localhost:5000/api/sensor-data
+Content-Type: application/json
+
+{
+  "temperature": 42.5,
+  "voltage": 230,
+  "current": 3.5,
+  "motorStatus": "ON",
+  "fault": "NORMAL"
+}
+
+### 3. Get Latest Sensor Data (GET)
+GET http://localhost:5000/api/sensor-data/latest
+
+### 4. Get All Sensor Data History (GET)
+GET http://localhost:5000/api/sensor-data

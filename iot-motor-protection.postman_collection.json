@@ -1,0 +1,81 @@
+{
+	"info": {
+		"_postman_id": "iot-motor-protection-collection",
+		"name": "IoT Motor Protection API",
+		"description": "API endpoints for IoT Motor Protection System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Send Sensor Data (POST)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"temperature\": 42.5,\n  \"voltage\": 230,\n  \"current\": 3.5,\n  \"motorStatus\": \"ON\",\n  \"fault\": \"NORMAL\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sensor-data",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sensor-data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Get Latest Sensor Data (GET)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/sensor-data/latest",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sensor-data",
+						"latest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Get Sensor Data History (GET)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/sensor-data",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sensor-data"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,32 @@
+# Dependency directories
+node_modules/
+server/node_modules/
+client/node_modules/
+
+# Production builds
+client/dist/
+dist/
+
+# Environment variables & secrets
+.env
+server/.env
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.suo
+*.user
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# PlatformIO & Arduino temp build files
+.pio/
+esp32/.pio/
+
+# OS metadata
+.DS_Store
+Thumbs.db
