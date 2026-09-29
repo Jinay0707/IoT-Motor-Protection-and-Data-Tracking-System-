@@ -28,10 +28,12 @@ export default function App() {
   const [activeCommand, setActiveCommand] = useState('AUTO');
   const [commandLoading, setCommandLoading] = useState(false);
 
+  const API_BASE = import.meta.env.VITE_API_URL || '';
+
   const fetchTelemetryData = async () => {
     try {
       // Fetch Latest Sensor Data
-      const latestRes = await fetch('/api/sensor-data/latest');
+      const latestRes = await fetch(`${API_BASE}/api/sensor-data/latest`);
       if (latestRes.ok) {
         const latestJson = await latestRes.json();
         if (latestJson) {
@@ -46,7 +48,7 @@ export default function App() {
       }
 
       // Fetch History Data
-      const historyRes = await fetch('/api/sensor-data');
+      const historyRes = await fetch(`${API_BASE}/api/sensor-data`);
       if (historyRes.ok) {
         const historyJson = await historyRes.json();
         if (Array.isArray(historyJson)) {
@@ -58,7 +60,7 @@ export default function App() {
     } catch (err) {
       console.error('API Connection Error:', err);
       setIsLive(false);
-      setErrorMsg('Unable to connect to backend server at http://localhost:5000');
+      setErrorMsg('Unable to connect to backend server API');
     } finally {
       setLoading(false);
     }
@@ -67,7 +69,7 @@ export default function App() {
   const sendRemoteCommand = async (cmd) => {
     setCommandLoading(true);
     try {
-      const res = await fetch('/api/motor-control', {
+      const res = await fetch(`${API_BASE}/api/motor-control`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ command: cmd }),
