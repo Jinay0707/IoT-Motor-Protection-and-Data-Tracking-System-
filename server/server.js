@@ -20,23 +20,25 @@ const inMemoryStore = [];
 // MongoDB connection with fallback warning
 const MONGO_URI = process.env.MONGO_URI || process.env.MONGODB_URI;
 
-mongoose
-  .connect(MONGO_URI, {
-    serverSelectionTimeoutMS: 4000,
-  })
-  .then(() => {
-    console.log("✅ Connected to MongoDB Atlas Cloud Database!");
-  })
-  .catch((error) => {
-    console.log("\n⚠️  MongoDB Atlas Connection Notice:");
-    console.log("--------------------------------------------------");
-    console.log("Your current IP address is not whitelisted on MongoDB Atlas.");
-    console.log("👉 FIX STEP: Go to https://cloud.mongodb.com");
-    console.log("   -> Network Access -> Add IP Address -> 'Allow Access From Anywhere' (0.0.0.0/0)");
-    console.log("--------------------------------------------------");
-    console.log("💡 [FALLBACK ENABLED]: Server is now using In-Memory Storage.");
-    console.log("   All API endpoints and Dashboard will work seamlessly!\n");
-  });
+if (MONGO_URI) {
+  mongoose
+    .connect(MONGO_URI, {
+      serverSelectionTimeoutMS: 4000,
+    })
+    .then(() => {
+      console.log("✅ Connected to MongoDB Atlas Cloud Database!");
+    })
+    .catch((error) => {
+      console.log("\n⚠️  MongoDB Atlas Connection Notice:");
+      console.log("--------------------------------------------------");
+      console.log("Your current IP address is not whitelisted on MongoDB Atlas.");
+      console.log("👉 FIX STEP: Go to https://cloud.mongodb.com");
+      console.log("   -> Network Access -> Add IP Address -> 'Allow Access From Anywhere' (0.0.0.0/0)");
+      console.log("--------------------------------------------------");
+      console.log("💡 [FALLBACK ENABLED]: Server is now using In-Memory Storage.");
+      console.log("   All API endpoints and Dashboard will work seamlessly!\n");
+    });
+}
 
 // Home
 app.get("/", (req, res) => {
@@ -162,7 +164,11 @@ app.get("/api/sensor-data", async (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📥 ESP32 Endpoint: http://localhost:${PORT}/api/sensor-data`);
-});
+if (process.env.NODE_ENV !== "test") {
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(`📥 ESP32 Endpoint: http://localhost:${PORT}/api/sensor-data`);
+  });
+}
+
+module.exports = app;
