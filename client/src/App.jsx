@@ -28,7 +28,7 @@ export default function App() {
   const [activeCommand, setActiveCommand] = useState('AUTO');
   const [commandLoading, setCommandLoading] = useState(false);
 
-  const API_BASE = import.meta.env.VITE_API_URL || '';
+  const API_BASE = import.meta.env.VITE_API_URL || (window.location.hostname === 'localhost' ? '' : 'https://iot-motor-protection-and-data-tracking.onrender.com');
 
   const fetchTelemetryData = async () => {
     try {
